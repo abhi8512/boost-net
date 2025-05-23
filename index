@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boost Net – Discover the Smartest Deals</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Boost Net - Smartest deals on trending tech products. Handpicked, limited-time offers. Shop now for exclusive affiliate deals!">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1597ff;
+      --primary-dark: #0057a3;
+      --accent: #4fd1c5;
+      --gradient: linear-gradient(90deg, #1597ff 0%, #4fd1c5 100%);
+      --bg: #f6fbff;
+      --card-bg: #fff;
+      --star: #ffe066;
+      --badge: #ff0059;
+      --badge2: #1597ff;
+      --text: #1a213a;
+      --muted: #7a87a5;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(21,151,255,0.06);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80'), var(--gradient);
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      padding: 70px 0 110px 0;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 90px;
+      background: linear-gradient(0deg, var(--bg) 0%, rgba(246,251,255,0.01) 100%);
+      z-index: 1;
+    }
+    .store-logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 22px;
+      color: #fff;
+      text-shadow: 0 2px 18px #1597ff90;
+      z-index: 2;
+      position: relative;
+      display: inline-block;
+    }
+    .hero-headline {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.5px;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #e0f7ff;
+      margin-bottom: 38px;
+      z-index: 2;
+      position: relative;
+    }
+    .cta-btn {
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.22rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      padding: 16px 44px;
+      cursor: pointer;
+      box-shadow: 0 4px 24px #1597ff40;
+      transition: all 0.22s;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 8px 32px #1597ff30;
+    }
+    /* Product Grid */
+    .products-section {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 80px 16px 50px 16px;
+    }
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 38px;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 40px 0 60px 0; }
+      .hero-headline { font-size: 1.4rem; }
+      .store-logo { font-size: 1.3rem; }
+      .section-title { font-size: 1.2rem; }
+      .product-grid { grid-template-columns: 1fr; gap: 22px; }
+      .products-section { padding: 28px 4px 20px 4px; }
+    }
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 17px 26px 17px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.22s, transform 0.22s;
+      min-height: 390px;
+    }
+    .product-card:hover {
+      box-shadow: 0 8px 38px #1597ff22;
+      transform: translateY(-3px) scale(1.025);
+      border: 1.5px solid #4fd1c540;
+    }
+    .product-img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: #f5fafd;
+      box-shadow: 0 2px 12px #1597ff14;
+      transition: transform 0.2s;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.06) rotate(-2deg);
+    }
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-align: center;
+      min-height: 2.5em;
+      color: var(--primary-dark);
+    }
+    .star-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .star-rating .star {
+      color: var(--star);
+      font-size: 1.1rem;
+      margin-right: 1px;
+    }
+    .star-rating .reviews {
+      color: var(--muted);
+      font-size: 0.99rem;
+    }
+    .badge {
+      position: absolute;
+      top: 18px; left: -12px;
+      background: var(--badge);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 5px 18px;
+      border-radius: 0 20px 20px 0;
+      box-shadow: 0 2px 10px #ff005920;
+      animation: badge-blink 1.7s infinite;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    @keyframes badge-blink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+    .badge.trending {
+      background: var(--badge2);
+      left: unset; right: -12px;
+      border-radius: 20px 0 0 20px;
+      animation: badge-pop 1.7s infinite;
+    }
+    @keyframes badge-pop {
+      0%,100% { transform: scale(1); }
+      60% { transform: scale(1.1); }
+    }
+    .urgency {
+      font-size: 0.97rem;
+      color: #ff0059;
+      margin-top: 9px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .countdown {
+      font-size: 1.03rem;
+      color: #ff0059;
+      margin-top: 7px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-align: center;
+      background: #fff0f4;
+      padding: 2px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 3px;
+    }
+    .buy-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.06rem;
+      font-weight: 700;
+      margin-top: 16px;
+      padding: 10px 33px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px #1597ff18;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.3px;
+    }
+    .buy-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px #1597ff20;
+    }
+    /* Testimonials */
+    .testimonials-section {
+      background: linear-gradient(90deg, #e9f6ff 0%, #f4fcff 100%);
+      padding: 55px 0;
+    }
+    .testimonials-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .testimonials-grid {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 27px 30px 22px 30px;
+      max-width: 350px;
+      min-width: 260px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .testimonial-quote {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin-bottom: 13px;
+      font-style: italic;
+    }
+    .testimonial-user {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+    /* FAQ */
+    .faq-section {
+      max-width: 870px;
+      margin: 0 auto;
+      padding: 62px 16px 44px 16px;
+    }
+    .faq-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 19px;
+      text-align: center;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .faq-q {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 3px;
+      font-size: 1.07rem;
+    }
+    .faq-a {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    /* Contact/Subscribe */
+    .contact-section {
+      background: #e9f6ff;
+      padding: 45px 0 40px 0;
+    }
+    .contact-title {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+    }
+    .subscribe-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .subscribe-input {
+      padding: 12px 18px;
+      border-radius: 20px;
+      border: 1px solid #b3e1ff;
+      font-size: 1rem;
+      outline: none;
+      width: 65%;
+      transition: border 0.13s;
+    }
+    .subscribe-input:focus {
+      border: 1.5px solid #1597ff;
+    }
+    .subscribe-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 12px 26px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px #1597ff10;
+    }
+    .subscribe-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .footer {
+      text-align: center;
+      padding: 22px 0 13px 0;
+      color: var(--muted);
+      font-size: 0.99rem;
+      background: #f6fbff;
+      margin-top: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="store-logo">Boost Net</div>
+    <div class="hero-headline">Discover the Smartest Deals – Handpicked by Boost Net</div>
+    <div class="hero-desc">Your hub for tech, speed and value. Curated products, exclusive offers, and lightning-fast deals. Shop smarter, shop Boost Net!</div>
+    <button class="cta-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+  </div>
+
+  <section class="products-section" id="products">
+    <div class="section-title">🔥 Trending Tech Deals</div>
+    <div class="product-grid">
+
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <div class="badge">Limited Offer</div>
+        <img class="product-img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Smart Watch">
+        <div class="product-title">Xenon Smart Watch Pro</div>
+        <div class="star-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="color:#d3d3d3;">★</span>
+          <span class="reviews">(231)</span>
+        </div>
+        <div class="urgency">Only 5 Left!</div>
+        <div class="countdown" data-end="2025-05-25T23:59:59Z">Ends in <span class="timer"></span></div>
+        <a class="buy-btn" href="https://www.example.com/affiliate-link1" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <!-- /Product Card 1 -->
+
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <div class="badge trending">Trending Now</div>
+        <img class="product-img" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="Wireless Earbuds">
+        <div class="product-title">Auris Wireless Earbuds</div>
+        <div class="star-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="reviews">(402)</span>
+        </div>
+        <div class="urgency">Hurry! Hot Seller</div>
+        <a class="buy-btn" href="https://www.example.com/affiliate-link2" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <!-- /Product Card 2 -->
+
+      <!-- Product Card 3 -->
+      <div class="product-card">
+        <div class="badge">Buy Fast – Limited Time Offer!</div>
+        <img class="product-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=400&q=80" alt="Smart Lamp">
+        <div class="product-title">LumoTech LED Smart Lamp</div>
+        <div class="star-rating">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star" style="color:#d3d3d3;">★</span>
+          <span class="reviews">(118)</span>
+        </div>
+        <div class="countdown" data-end="2025-05-24T08:00:00Z">Ends in <span class="timer"></span></div>
+        <a class="buy-btn" href="https://www.example.com/affiliate-link3" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <!-- /Product Card 3 -->
+
+      <!-- Copy and paste additional product cards below. Change image, title, badge, rating, reviews, urgency/countdown, and affiliate link as needed. -->
+    </div>
+  </section>
+
+  <!-- Testimonials Section (Optional) -->
+  <section class="testimonials-section">
+    <div class="testimonials-title">What Our Users Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“Boost Net always finds the best deals! I saved so much on my last gadget purchase.”</div>
+        <div class="testimonial-user">– Priya S.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“Fast, reliable, and trustworthy. I love the clean interface and smart recommendations!”</div>
+        <div class="testimonial-user">– Mark D.</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“I used the ‘Buy Now’ link and got my headphones for 30% less than anywhere else.”</div>
+        <div class="testimonial-user">– Aisha W.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (Optional) -->
+  <section class="faq-section">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-list">
+      <div>
+        <div class="faq-q">How does Boost Net choose these products?</div>
+        <div class="faq-a">Our team handpicks trending products using market insights, reviews, and verified affiliate offers.</div>
+      </div>
+      <div>
+        <div class="faq-q">Are these prices better than other stores?</div>
+        <div class="faq-a">We source exclusive deals and limited-time offers to ensure you get the best value.</div>
+      </div>
+      <div>
+        <div class="faq-q">How do I buy a product?</div>
+        <div class="faq-a">Click the “Buy Now” button on a product; you’ll be redirected to our affiliate partner to complete your purchase securely.</div>
+      </div>
+      <div>
+        <div class="faq-q">Is my data safe?</div>
+        <div class="faq-a">Absolutely. We do not store payment details or share your email with third parties.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Subscribe Section (Optional) -->
+  <section class="contact-section">
+    <div class="contact-title">Get Smart Deals in Your Inbox</div>
+    <form class="subscribe-box" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+      <input class="subscribe-input" type="email" placeholder="Enter your email" required>
+      <button class="subscribe-btn" type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <div class="footer">
+    &copy; 2025 Boost Net. Smart Deals, Fast Savings.<br>
+    <span style="font-size: 0.91em;">Affiliate links may earn us a commission at no extra cost to you.</span>
+  </div>
+
+  <!-- Countdown Timer Script -->
+  <script>
+    function updateCountdowns() {
+      const countdowns = document.querySelectorAll('.countdown');
+      countdowns.forEach(function(cd) {
+        const timer = cd.querySelector('.timer');
+        const end = cd.getAttribute('data-end');
+        if (!end) { timer.textContent = ''; return; }
+        const endTime = new Date(end).getTime();
+        const now = Date.now();
+        let diff = Math.floor((endTime - now) / 1000);
+        if (diff <= 0) {
+          timer.textContent = 'Offer Ended';
+          cd.style.opacity = 0.6;
+          return;
+        }
+        const d = Math.floor(diff / (3600*24));
+        diff -= d * 3600*24;
+        const h = Math.floor(diff / 3600);
+        diff -= h * 3600;
+        const m = Math.floor(diff / 60);
+        const s = diff - m * 60;
+        let str = '';
+        if (d) str += d + 'd ';
+        str += (h < 10 ? '0' : '') + h + 'h ';
+        str += (m < 10 ? '0' : '') + m + 'm ';
+        str += (s < 10 ? '0' : '') + s + 's';
+        timer.textContent = str;
+      });
+    }
+    setInterval(updateCountdowns, 1000);
+    updateCountdowns();
+  </script>
+</body>
+</html>
